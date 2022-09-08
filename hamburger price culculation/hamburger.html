@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1 class="header">Соберите гамбургер</h1>
+    <div class="fontWrepper">
+        <input type="number" value="10" max="50" class="inputNumber">
+        <p>Чаевые официанту (%)</p>
+    </div>
+    <input type="range" min="0" max="50" value="10" step="1" class="inputRange">
+    <h2>Размер</h2>
+    <form>
+        <input type="radio" name="size" value="1" checked> Большой
+        <input type="radio" name="size" value="0.5"> Маленький
+    </form>
+    <h2>Наполнитель</h2>
+    <form>
+        <input type="radio" name="topping" data-price="50" data-call="150" checked> Сыр
+        <input type="radio" name="topping" data-price="100" data-call="50"> Салат
+        <input type="radio" name="topping" data-price="150" data-call="120"> Картофель
+    </form>
+    <h2>Добавки</h2>
+    <form>
+        <input type="checkbox" name="additives" data-price="15" data-call="5"> Приправа
+        <input type="checkbox" name="additives" data-price="25" data-call="100"> Майонез
+    </form>
+    <h2>Расчет стоимости и каллорийности</h2>
+    <p>Итого стоимость : <span id="totalPrice"> 0 </span> руб</p>
+    <p>Итого каллорийность : <span id="totalCall"> 0 </span> ккалл</p>
+
+    <script src="../hamburger/script.js"></script>
+</body>
+
+</html>

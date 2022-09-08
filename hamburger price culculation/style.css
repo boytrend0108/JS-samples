@@ -1,0 +1,24 @@
+body {
+    margin-left: 20px;
+}
+
+.fontWrepper {
+
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+}
+
+.inputNumber {
+    width: 50px;
+    font-size: large;
+    color: brown;
+
+
+}
+
+.inputRange {
+    width: 500px;
+    padding: 20px;
+}
