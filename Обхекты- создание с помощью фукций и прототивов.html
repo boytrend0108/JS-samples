@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<script>
+    "use strict";
+
+    function Car(el1, el2, el3) {
+        this.carModel = el1;
+        this.carColor = el2;
+        this.carPrice = el3;
+    }
+
+    Car.prototype.beep = function() {
+        console.log(`${this.carModel} подаёт сигнал`)
+    };
+    Car.prototype.showPrice = function() {
+        console.log(`Цена машины ${this.carPrice} долларов США`)
+    };
+
+    const car1 = new Car(`BMW`, `Red`, `1000`);
+    const car2 = new Car(`AUDI`, `Black`, `3000`);
+
+    car1.beep();
+    car2.showPrice();
+</script>
+
+<body>
+
+</body>
+
+</html>

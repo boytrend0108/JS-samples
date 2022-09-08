@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+</head>
+
+<body>
+
+    <script>
+        "use strict";
+        // Создаем функуию которая просто делает задержку на ms милисекунд...
+        const sleep = (ms) => {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve()
+                }, ms)
+            })
+        }
+
+        // sleep(2000).then(() => { console.log(`After 2 sec...`) });
+        // sleep(4000).then(() => { console.log(`After 4 sec...`) });
+
+        // Методы Глобального класса Promise
+        // метод all выполняет Then после того как будут выполнены все промисы в массиве.
+        Promise.all([sleep(2000), sleep(4000)])
+            .then(() => {
+                console.log(`All promises`);
+            })
+        // Метод race показівает самій первый промис который будет исполнен
+        Promise.race([sleep(2000), sleep(4000)])
+            .then(() => {
+                console.log(`Race promises`);
+            })
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

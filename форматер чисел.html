@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=1, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict'
+        const a = 1234567989;
+        const formater = new Intl.NumberFormat(`ru`); // создаем новый класс и указываем локацию
+        console.log(formater.format(a)); // 1 234 567 989
+    </script>
+</body>
+
+</html>
+
+
+'use strict'
+const a = 1234567989;
+const formater = new Intl.NumberFormat(`ru`); // создаем новый класс и указываем локацию
+console.log(formater.format(a));

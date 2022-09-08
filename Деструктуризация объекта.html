@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+</head>
+
+<body>
+
+    <script>
+        "use strict";
+        // Деструктуризация объекта
+
+        const obj = {
+            name: `Ann`,
+            age: 25,
+            city: `Kiev`
+        }
+        // Если ключ сопадает с названием переменной
+        const { age, name, city } = obj;
+        console.log(age, name, city);// 25 'Ann' 'Kiev'
+
+        // Если ключ НЕ сопадает с названием переменной
+        const { age: a, name: b, city: c } = obj;
+        console.log(a, b, c);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

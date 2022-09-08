@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+</head>
+
+<body>
+
+    <script>
+        "use strict";
+        // Симулируем запрос данных...
+        console.log(`Request data....`);
+        // // Симулируем подготовку данных с задержкой не сервере
+        // setTimeout(() => {
+        //     console.log(`Prepering data...`);
+        //     const backendData = {
+        //         name: `Ivan`,
+        //         age: 25
+        //     }
+        //     // Cимулируем отправку данных клиенту...
+        //     setTimeout(() => {
+        //         backendData.city = `Moscow`;
+        //         console.log(`Data recieved`, backendData);
+        //     }, 2000);
+        // }, 2000);
+        //---------------------------------------------------------------------------
+        const p = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                console.log(`Prepering data...`);
+                const backendData = {
+                    name: `Ivan`,
+                    age: 25
+                }
+                resolve(backendData);
+            }, 2000);
+        });
+
+        p.then((data) => {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    data.city = `Moscow`;
+                    resolve(data);
+                }, 2000);
+            })
+        })
+            .then((clientData) => {
+                console.log(`Data recieved`, clientData);
+                return clientData;
+            })
+            .then((data) => {
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        console.log(`Prepering lastData...`);
+                        data.address = `00332`
+                        resolve(data);
+                    }, 2000)
+                });
+            })
+            .then((lastData) => {
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        console.log(lastData)
+                        resolve();
+                    }, 2000)
+                })
+            })
+            .finally(() => { console.log(`Finally`) })
+ //--------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

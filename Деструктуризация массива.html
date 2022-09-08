@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+</head>
+
+<body>
+
+    <script>
+        "use strict";
+        // Деструктуризация массива
+
+        let [name2, age, city] = [`Ann`, 32, `Moscow`];
+        console.log(name2, age, city);// получим 3 переменные
+
+        let [name, ...arr] = [`Ann`, 32, `Moscow`];
+        console.log(name, arr); // получим переменную name, а остальное в массив
+
+        let [s1, s2, s3] = `IBM Lenovo`;
+        console.log(s1, s2, s3); // Получим I B M 
+
+        // Split превращает строку в массив
+        let [s4, s5] = `IBM Lenovo`.split(` `); // между `пробел`
+        console.log(s4, s5); // Получим IBM Lenovo
+
+        let [s6, , s7] = `IBM Intel Lenovo`.split(` `); // между `пробел`
+        console.log(s4, s5); // Получим IBM Lenovo
+
+        // Можно добавить значение по умолчанию
+        let [s8 = `По умолчанию 1`, s9, s10 = `По умолчанию 2`] = [1, 2];
+        console.log(s8, s9, s10); // Выведет 1 2 'По умолчанию 2'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

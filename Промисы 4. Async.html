@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+</head>
+
+<body>
+
+    <script>
+        "use strict";
+
+        const num = (a) => {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    if (a) {
+                        a = a + 10
+                        resolve(a);
+                    } else {
+                        reject(`error`)
+                    }
+                }, 2000);
+                ;
+            })
+        }
+
+        const foo = async () => {
+            try {
+                //----------- Выполнятся по порядку----------
+                // const result = await num(10);
+                // const result2 = await num(25);
+                // console.log(result, result2);
+
+                //--------- Выполнится сразу ( когда порядок не важет)-----
+                const result = await Promise.all(
+                    [num(10), num(20)]
+                )
+                console.log(result);
+                // здесь отлавливаем ошибку
+            } catch (err) {
+                console.log(err);
+            }
+        }
+
+        foo();
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

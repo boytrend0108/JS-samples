@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+</head>
+
+<body>
+    <!--
+Обязательное задание.
+
+Необходимо из объекта, который лежит в константе post вывести значения, к
+которым приписан комментарий, в консоль.
+-->
+    <script>
+        "use strict";
+        let arr = [0, 1, 2, 3, 4, 5, 6];
+
+        function isOddnumber(el) {
+            return el % 2 !== 0;
+        }
+
+        console.log(arr);
+        let newArr = arr.filter(isOddnumber);
+        console.log(newArr);
+
+        let newArr2 = arr.filter(function(a) {
+            return a % 2 === 0;
+        });
+        console.log(newArr2);
+
+        let newArr3 = arr.filter(b => b % 2 !== 0);
+        console.log(newArr3);
+    </script>
+</body>
+
+</html>
