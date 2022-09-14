@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=1, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button class="b-1">b-1</button>
+    <button class="b-2">b-2</button>
+    <button class="b-3">b-3</button>
+    <button class="b-4">b-4</button>
+    <button class="b-5">b-5</button>
+    <button class="b-6">b-6</button>
+    <script>
+        'use strict'
+        // 1
+        console.log(this); // по умолчанию this указывает на window
+
+        // 2 
+        document.querySelector(`.b-1`).onclick = function () {
+            console.log(this); // указывет нa елемент на котором произошло событие, но
+            // НЕ РАБОТАЕТ ДЛЯ СТРЕЛОЧНЫХ ФУНКУЦИЙ
+            this.style.background = `orange`; // перекрасит кнопку в оранжевый
+        };
+
+        // 3
+        // THIS В ОБЪЕКТАХ УКАЗЫВАЕТ НА САМ ОБЪЕКТ
+
+
+        //-----------МЕТОД CALL------------------//
+        // когдa this ссылается не туда куда нам нужно, правильный контекст можно указать с помощью метода call
+        // function.call(context, [arg1, arg2...]) 
+
+        const b2 = document.querySelector(`.b-2`);
+        function test() {
+            console.log(this); // указывет нa елемент на котором произошло событие
+            this.style.background = `orange`; // перекрасит кнопку в оранжевый
+        }
+
+        test.call(b2); // вызвал функцию где this это b2
+
+
+        const b1 = document.querySelector(`.b-1`);
+        const b3 = document.querySelector(`.b-3`);
+        function test3() {
+            console.log(this); // указывет нa елемент на котором произошло событие
+            this.style.background = `red`; // перекрасит кнопку в оранжевый
+        }
+
+        b3.onclick = function () {
+            test3.call(b1); // нажимаем на b3 а передаем контекст b1
+        }
+
+        // ---------------Метод apply-----------------------
+        // тоже что и метод call, только если агрументов много передаем их с помощью массива
+
+        const b4 = document.querySelector(`.b-4`);
+        function test4(color, num) {
+            console.log(this); // указывет нa елемент на котором произошло событие
+            this.style.background = color; // перекрасит кнопку в оранжевый
+            console.log(num);
+        }
+
+        b4.onclick = function () {
+            test4.apply(b1, [`green`, 5555]); // вызвал функцию где this это b1
+        }
+
+        // МЕТОДЫ COLL И APLLY ВЫПОЛНЯЮТСЯ СРАЗУ(БЕЗ ВЫЗОВА)
+
+        // ------------------Метод bind------------------------------
+        // позволяет создавать функции уже с привязанным контекстом.
+        const b5 = document.querySelector(`.b-5`);
+        const b6 = document.querySelector(`.b-6`);
+
+        // coздаем новые фукции а1 с контекстом b5  и а2 c контекстом b6, на основе уже готовой фунции test4
+        const a5 = test4.bind(b6, `blue`, 555);
+        const a6 = test4.bind(b5, `grey`, 666);
+
+        b6.onclick = a6;
+        b5.onclick = a5;
+
+
+
+    </script>
+</body>
+
+</html>
