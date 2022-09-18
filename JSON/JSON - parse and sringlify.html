@@ -14,19 +14,22 @@
         let userJSON = `{"name": "Ann", "age": 22, "isAdmin": true }`;
         // Достаем JSON файл
         let user = JSON.parse(userJSON);
+        console.log(user); // user - это объект
         // Добавляем данные 
         user.dateCreated = `2022-10-01`;
         user.address = {
             city: `Belgorod`,
             postalCode: 103565
         };
+        console.log(user);// объект изменился
+
         // Отправляем назад в JSON 
         userJSON = JSON.stringify(user);
         console.log(userJSON);
-        // Можно отправлять выборочно, через добавление второго параметра: массив
+        // Можно отправлять ключи выборочно, через добавление второго параметра: массив
         const userJSON2 = JSON.stringify(user, ["name", "isAdmin", "address", "city"]);
         console.log(userJSON2);
-        // Можно отформатировать, с помощью третьего параметра
+        // Можно отформатировать, с помощью третьего параметра (кол-во пробелов для форматирования)
         const userJSON3 = JSON.stringify(user, ["name", "isAdmin", "address", "city", "dateCreated"], 2);
         console.log(userJSON3);
         /* В процессе парсинга мы можем преобразовать данные в нужный нам вид: в данном
