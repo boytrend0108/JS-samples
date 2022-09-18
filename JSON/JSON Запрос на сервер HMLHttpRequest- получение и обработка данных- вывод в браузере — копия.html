@@ -27,7 +27,7 @@
             xhr.open(`GET`, `https://jsonplaceholder.typicode.com/users`, `true`);
 
             xhr.onreadystatechange = () => {
-                // смотрим состояния готовности
+                // -------------смотрим состояния готовности--------
                 // xhr.readyState;
                 // 0 - запрос не инициализирован
                 // 1 - загрузка данных
@@ -36,7 +36,7 @@
                 // 4 - запрос выполнен
                 if (xhr.readyState !== 4) return;
 
-                // Смотрим корректность передачи данных по статус кодам
+                // -------Смотрим корректность передачи данных по статус кодам
                 // Informational responses (100–199)
                 // Successful responses (200–299)
                 // Redirection messages (300–399)
@@ -45,8 +45,9 @@
                 if (xhr.status !== 200)
                     console.log(`Error: ${xhr.status} ${xhr.statusText}`);
                 else {
-                    // console.log(`ok`, xhr.responseText); // вернет ответ от сервера в виде текта
-                    const data = JSON.parse(xhr.responseText);
+                    // console.log(`ok`, xhr.responseText); // вернет ответ от сервера в формате JSON
+
+                    const data = JSON.parse(xhr.responseText);// преобразуем полученые данные 
                     // деструктуризация обьекта
                     const { id, name } = data[0]
                     // вставляем HTML 
