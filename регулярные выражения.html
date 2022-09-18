@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    "use strict";
+    // //let regExp = new RegExp(`выражение`, `флаги`); // первый способ
+    // //let regExp2 = /expration/flags; // второй спобоб
+
+    // // Флаги
+    // // i- поиск без учета регистра
+    // // g- множественный поиск
+    // // m- многострочный поиск
+
+    // let str = `Язык Javascript называется так из-за популярности языка Java`;
+    // let regExp3 = new RegExp(`java`, `i`);
+    // console.log(regExp3); //  /java/
+
+    // // метод search
+    // // -1 вхождений не найдено
+    // // возвращает индекс первого вхождения
+    // console.log(str.search(regExp3));
+
+    // // метод match
+    // console.log(str.match(/java/)); // null
+    // console.log(str.match(/java/i));
+    // console.log(str.match(/java/ig));
+
+    // // метод replace
+    // console.log(`+7(000)000-00-00`);
+    // console.log(`+7(000)000-00-00`.replace(`-`, `:`)); // заменит только первый дефис
+    // console.log(`+7(000)000-00-00`.replace(/-/g, `:`)); // заменит все дефисы
+
+    // let name = `Smith, John`;
+    // console.log(name);
+    // console.log(name.replace(/([a-z]+), ([a-z]+)/i, `$2 $1`)); // John Smith
+    // console.log(name.replace(/([a-z]+), ([a-z]+)/i, `Было: $&\nСтало: $2 $1`));
+
+    // // Классы
+    // // \d - [0123456789] или [0-9]- все числа
+    // // \D - [^0123456789] или [^0-9] НЕ ЧИСЛА
+    // // \w - [a-x0-9_]
+    // // \W - не буквы
+    // // \s - space, tab, \n (пробелы, табуляция, новая строка)
+    // // \S
+    // // \b - граница слова
+    // // \B - НЕ ГРАНИЦА СЛОВА
+
+    // // Квантификаторы
+    // // {m} - строго m раз
+    // // {m,n} - от m до n раз
+    // // {m,} - от m до бесконечности
+    // // {,n} - от 0 до n раз
+
+    // // сокращения
+    // // + - {1,}
+    // // * - {0,}
+    // // ? - {0,1}
+
+    // console.log(`+7-(000)000;00-00`.replace(/\D/g, ``)); // 700000000
+
+    // console.log(`color colour`.match(/colou?r/g));
+    // console.log(`color colour colotr`.match(/colo[ut]?r/g));
+
+    // пример с границей слова
+    // console.log(`Javascript это не Java`.match(/java/i));// получем первое слово Java
+    // console.log(`Javascript это не Java`.match(/\bjava\b/i)); // получаем отдельное Java
+    // console.log(`Javascript это не Java`.match(/\bjava\B/i)); // получаем первое Java
+
+    // // Пример с началом строки
+    // console.log(`Javascript это не Java`.match(/^java/i));
+    // // Пример с концом строки
+    // console.log(`Javascript это не Java`.match(/java$/i));
+
+    // console.log(`Chapter 7.1 8q3`.match(/\d\.\d/g)); // 'экранируем точку с помощью \
+
+    // // Метод test (true|false)
+    // let str = `Язык Javascript называется так из-за популярности языка Java`;
+    // console.log(/java/.test(str)); // false
+    // console.log(/java/i.test(str)); // true
+
+    // Метод exec
+    let str = `Язык Javascript называется так из-за популярности языка Java`;
+    let result;
+    let regExp = /java/ig;
+    console.log(`Hачальный индекс LastIndex ${regExp.lastIndex}`);
+    while (result = regExp.exec(str)) {
+        console.log(result);
+        console.log(`Текущий индекс LastIndex ${regExp.lastIndex}`);
+    };
+    console.log(`Конечный индекс LastIndex ${regExp.lastIndex}`);
+
+
+
+
+
+
+</script>
