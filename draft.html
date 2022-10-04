@@ -21,12 +21,6 @@
 
 <script>
     "use strict";
-    document.querySelector(`form`).addEventListener(`submit`, event => {
-        if (document.querySelector(`input`) === ``) {
-            document.querySelector(`.error`)
-                .textContent = `это поле не может быть пустым`;
-            event.preventDefault();
-        }
-
-    })
+    let text = ` 'Hi Mary.' Two: 'Oh, hi.'`;
+    console.log(text.replace(/'/g, `"`));
 </script>
