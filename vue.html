@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .block {
+        width: 100px;
+        height: 100px;
+        background-color: gray;
+    }
+
+    .red {
+        background-color: red;
+    }
+
+    .blue {
+        background-color: blue;
+    }
+</style>
+
+<body>
+    <div id="app">
+        <h1>{{title}}</h1>
+        <h3>{{sayHello()}}</h3>
+        <!-- Все атрибуты вставляем через : -->
+        <a :href="link">Google</a>
+        <!-- HTML вставляем через v-html -->
+        <div v-html="completeElem"></div>
+        <h2>------------------Двусторонняя связь---------------</h2>
+        <!-- Inputs связываем через v-model -->
+        <input type="text" v-model="name" placeholder="v-model">
+        <p>{{name}}</p>
+        <!-- Изьменения фиксируется когда убираем фокус из инпута -->
+        <input type="text" v-model.lazy="name2">
+        <p>{{name2}}</p>
+        <!-- Возвращат числа -->
+        <input type="number" v-model.number="someNam">
+        <p>{{someNam}}</p>
+        <h2>---------------------События-----------------------</h2>
+        <!-- Cобытия отлавливаем с помощью @(v-on:)event = "метод"-->
+        <button @click="increase(2, $event)">
+            {{counter < 10 ? `Less then 10` :`Greater then 10`}} </button>
+
+                <p @mousemove="getCoordinates($event)">
+                    Carrent position {{x}}/{{y}}
+                    <!-- на єтом спане не будет отлавливаться собітие. Модификатор stop -->
+                    <span @mousemove.stop>Don't catch coordinates</span>
+                </p>
+
+                <p @mousemove="getCoordinates2($event)">
+                    Carrent position {{x2}}/{{y2}}
+                    <!-- на єтом спане отмена действия по умолчанию -->
+                    <span @mousemove.prevent>Don't catch coordinates</span>
+                </p>
+                <h2>---------------Computed Result-------------------</h2>
+                <div>
+                    <button @click="counter++">Increase</button>
+                    <button @click="counter--">Decrease</button>
+                    <button @click="secondCounter++">Increase second counter</button>
+                    <p>Counter:{{counter}} | {{secondCounter}}</p>
+                    <p>Result: {{methodResult()}} | {{computedResult}}</p>
+                </div>
+                <h2>---------------Style-------------------</h2>
+                <div class="block" :style="{backgroundColor:`red`}"></div>
+                <h2>---------------Classes-------------------</h2>
+                <!-- в :class указываем какой класс применить. -->
+                <div class="block" :class="{red:isRed, blue:!isRed}" @click="isRed=!isRed">
+                </div>
+                <h2>---------------Editor of Squares-------------</h2>
+                <input type="number" v-model="width">
+                <input type="text" v-model="color">
+                <div class="block" :style="myStyle"></div>
+                <h2>---------------Отрисовка-------------</h2>
+                <!-- v-if удаляет елемент из разметки полностью НЕ ХОРОШО -->
+                <h3 v-if="show">I'm visible</h3>
+                <!-- Удаляет через display:none  -->
+                <h3 v-show="show2">I'm visible2</h3>
+                <h2>---------------Отрисовка- Переключатель-------------</h2>
+                <!-- Переключатель if else ОБЯЗАТЕЛЬНО ДОЛЖНЫ БЫТЬ В СВЯЗКЕ Т
+                МЕЖДУ НИМИ НИЧЕГО НЕ ДОЛЖНО БЫТЬ-->
+                <h3 v-if="show3">I'm visible if</h3>
+                <h3 v-else="show3">I'm !!!! visible else</h3>
+                <button @click="show3 = !show3">Change</button>
+                <h2>---------------Отрисовка Списка Товаров------------</h2>
+                <div class="products">
+                    <!-- Обязательно указывать key!!! , можно использовать и for in-->
+                    <div class="product" v-for="product of products" :key="product.id">
+                        <img :src="product.img" alt="">
+                        <p>Наименование:{{product.title}}</p>
+                        <p>Количество:{{product.quantity}}</p>
+                        <p>Стоимость:{{product.quantity * product.price}}</p>
+                    </div>
+                    <button @click="addProduct">Add new goods</button>
+                    <button @click="products[2].quantity++">Increase</button>
+                </div>
+
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        `use strict`
+        //  Запускаем приложения через создание экземпляра класса Vue
+        const app = new Vue({
+            el: `#app`, // куда отрисовываем(!)
+            data: {     // что отрисовываем (!)
+                name: ``,
+                name2: ``,
+                someNam: 0,
+                title: `Hello Vue!`,
+                link: `https://google.com`,
+                completeElem: `<span>I'm new element <a href="https://google.com" id="link">Google2</a>
+                    </span>`,
+                counter: 0,
+                secondCounter: 0,
+                x: 0,
+                y: 0,
+                x2: 0,
+                y2: 0,
+                isRed: false,
+                color: `#ccc`,
+                width: 100,
+                show: true,
+                show2: true,
+                show3: true,
+                products: [
+                    { id: 1, title: `Notebook`, price: `1000`, quantity: `10`, img: `https://via.placeholder.com/200x150'` },
+                    { id: 2, title: `Mouse`, price: `100`, quantity: `15`, img: `https://via.placeholder.com/200x150'` },
+                    { id: 3, title: `Keyboard`, price: `250`, quantity: `1`, img: `https://via.placeholder.com/200x150'` },
+
+                ]
+
+            },
+            methods: {
+                sayHello() {
+                    this.title = `Changed`
+                    return this.title
+                },
+                increase(step, event) { // event здесь для примера, если понадобиться его передать 
+                    console.log(event);
+                    this.counter += step;// будет прибавлять через step
+                },
+                getCoordinates(event) {
+                    this.x = event.clientX;
+                    this.y = event.clientY;
+                },
+                getCoordinates2(event) {
+                    this.x2 = event.clientX;
+                    this.y2 = event.clientY;
+                },
+                methodResult() {
+                    console.log(`method`);
+                    return this.counter > 5 ? `Greater then 5` : `Less then 5`;
+                },
+                addProduct() {
+                    this.products.push({ id: 4, title: `NotePad`, price: `2550`, quantity: `1`, img: `https://via.placeholder.com/200x150'` })
+                }
+            },
+            // Если надо что-то вычислить - всегда использовать computed
+            computed: {
+                computedResult() {
+                    console.log(`computed`);
+                    return this.counter > 5 ? `Greater then 5` : `Less then 5`;
+                },
+                myStyle() {
+                    return {
+                        backgroundColor: this.color,
+                        width: `${this.width}px`,
+                        height: `${this.width}px`,
+                    }
+                }
+
+            }
+        });
+
+    </script>
+</body>
+
+</html>
