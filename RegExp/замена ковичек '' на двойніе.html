@@ -27,7 +27,6 @@
     <script>
         let block = document.getElementById('text-container');
         document.getElementById('replace').addEventListener('click', () => {
-
             // block.textContent = block.textContent.replace(/'/g, '"');- просто поменять '' на ""
             // А здесь не мненять в таких словах как I'm,  what's и т.д.
             block.textContent = block.textContent.replace(/\B'|'\B/g, '"');
