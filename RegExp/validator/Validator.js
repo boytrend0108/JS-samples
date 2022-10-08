@@ -12,6 +12,7 @@ window.onload = () => {
 
 class Validator {
     constructor(form) {
+        this.form = form; // єто id нужной формы
         // Собираем регулярные выражения
         this.patterns = {
             name: /^[a-zа-яё]+$/i, // Имя содержит только буквы.
@@ -25,16 +26,18 @@ class Validator {
             email: 'E-mail выглядит как mymail@mail.ru, или my.mail@mail.ru, или my-mail@mail.ru'
         };
         this.errorClass = 'error-msg';// класс дива который будет выводится если будет ошибка
-        this.form = form; // єто id нужной формы
         this.valid = false;// изначально значение valid устанавливаем false
         this._validateForm();// сразу запускаем валидацию формы
     }
     // Валидация формы
     _validateForm() {
+        // Собираем массив из дивов с ошибками(если они есть)
         let errors = [...document.getElementById(this.form).querySelectorAll(`.${this.errorClass}`)];
+        // и удаляем всё (ЗАЯЕМ ТАИ И НЕ ПОНЯЛ)
         for (let error of errors) {
             error.remove();
         }
+
         // Собираем массив из всех инпутов.
         let formFields = [...document.getElementById(this.form).getElementsByTagName('input')];
         // Перебираем массив
@@ -60,13 +63,14 @@ class Validator {
             }
         }
     }
+    // Добавляем сообщение об ошибке
     _addErrorMsg(field) {
         // собираем строку с сообщение об ошибке
         let error = `<div class="${this.errorClass}">${this.errors[field.name]}</div> `;
         // Находим родителя нашего импута и...
         field.parentNode.insertAdjacentHTML('beforeend', error);//... вставляем в HTML подготовленную строку
     }
-
+    // Следим зa полем ввода
     _watchField(field) {
         field.addEventListener('input', () => {
             // Находим див с текстом об ошибке
