@@ -7,6 +7,7 @@ const app = new Vue({
         name2: ``,
         someNam: 0,
         title: `Hello Vue!`,
+        tille2: ``,
         link: `https://google.com`,
         completeElem: `<span>I'm new element <a href="https://google.com" id="link">Google2</a>
                     </span>`,
@@ -26,14 +27,13 @@ const app = new Vue({
             { id: 1, title: `Notebook`, price: `1000`, quantity: `10`, img: `https://via.placeholder.com/200x150'` },
             { id: 2, title: `Mouse`, price: `100`, quantity: `15`, img: `https://via.placeholder.com/200x150'` },
             { id: 3, title: `Keyboard`, price: `250`, quantity: `1`, img: `https://via.placeholder.com/200x150'` },
-
         ]
 
     },
     methods: {
         sayHello() {
-            this.title = `Changed`
-            return this.title
+            this.title2 = `Changed`
+            return this.title2
         },
         increase(step, event) { // event здесь для примера, если понадобиться его передать 
             console.log(event);
