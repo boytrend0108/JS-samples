@@ -1,4 +1,14 @@
 `use strict`
+Vue.component(`component-one`, {
+    template: `<p>Что такое Lorem Ipsum?</p>`
+});
+Vue.component(`component-two`, {
+    template: `<p>Что такое Lorem Ipsum? Что такое Lorem Ipsum?</p>`
+});
+Vue.component(`component-three`, {
+    template: `<p>Что такое Lorem Ipsum? Что такое Lorem Ipsum? Что такое Lorem Ipsum?</p>`
+});
+
 // coздаем компонент с локальной регистрацией
 const childElement = {
     name: `child-element`,
@@ -28,6 +38,10 @@ Vue.component(`some-el`, {
         <div>{{titleEl}}</div>
         <child-element></child-element>
         <button @click="fnEl">{{counterEl}}</button>
+        
+        <slot>
+        <p>Defoult</p>
+        </slot>
     </div>`,
     // локальніе компоненты регистрируем с помощью components
     components: {
