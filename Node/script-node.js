@@ -1,3 +1,5 @@
+// Перед началом инизиализируем проект npm init !!!!!!(заполняем файл package.json)
+
 // Старый вариант
 // const os = require(`os`); // подключаем библиотеку ОС компа
 // console.log(os.type());// выводим тип ОС
@@ -6,7 +8,7 @@
 // import { type } from `os`; // подключаем библиотеку ОС компа
 // console.log(type());// выводим тип ОС
 
-// Мы установили библиотеку nosmoment и подключаеся к ней
+// Мы установили библиотеку moment и подключаеся к ней
 // import moment from `moment`;
 // const moment = require(`moment`);
 // console.log(moment());
@@ -18,7 +20,7 @@
 // const { a } = require('./func');
 // console.log(a(15));
 
-//----подключаем библиотеку для работі с файловой системой
+//----подключаем библиотеку для работы с файловой системой
 // const fs = require(`fs`);
 // // Например есть массив из пользователей
 // const users = [{ name: `Ivan`, age: 22 }];
@@ -62,4 +64,4 @@ const server = http.createServer((req, res) => {// создаем сервер
     }
 });
 
-server.listen(555); 
+server.listen(777); 
