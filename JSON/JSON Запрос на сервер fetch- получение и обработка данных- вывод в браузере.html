@@ -25,10 +25,10 @@
                 // получаем данные в виде потока
                 .then((response) => {
                     console.log(response);
-                    // преобразуем поток в формат JSON и передаем дальше
+                    // преобразуем поток в формат JSON. достаем тело json и  передаем дальше
                     return response.json();
                 })
-                // получаем JSON 
+                // получаем то что біло в json
                 .then((data) => {
                     console.log(data);
                 })
