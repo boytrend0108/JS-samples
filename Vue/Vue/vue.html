@@ -36,8 +36,11 @@
         <!-- Inputs связываем через v-model -->
         <input type="text" v-model="name" placeholder="v-model">
         <p>{{name}}</p>
+        <!-- .trim - delete spaces -->
+        <input type="text" v-model="name4" placeholder="v-model.trim">
+        <p>{{name4}}</p>
         <!-- Изьменения фиксируется когда убираем фокус из инпута -->
-        <input type="text" v-model.lazy="name2">
+        <input type="text" v-model.lazy="name2" placeholder="v-model.lazy">
         <p>{{name2}}</p>
         <!-- Возвращат числа -->
         <input type="number" v-model.number="someNam">

@@ -6,6 +6,7 @@ const app = new Vue({
         name: ``,
         name2: ``,
         someNam: 0,
+        name4: '',
         title: `Hello Vue!`,
         tille2: ``,
         link: `https://google.com`,
