@@ -44,9 +44,10 @@ function adopt($text) {
 	return '=?UTF-8?B?'.Base64_encode($text).'?=';
 }
 
-// $headers = "MIME-Version: 1.0" . PHP_EOL .
-$headers = "Content-Type: text/html; charset=utf-8";
-// 'From: '.adopt($project_name).' <'.$admin_email.'>' . PHP_EOL .
-// 'Reply-To: '.$admin_email.'' . PHP_EOL;
+// $headers = "MIME-Version: 1.0";
+$headers = "From: digital-boys.com\r\n";
+$headers .= "Content-Type: text/html; charset=utf-8";
+// $headers .= "From: '.adopt($project_name).' <'.$admin_email.'>";
+// $headers .= "Reply-To: eur-usd@bk.ru\r\n";
 
 mail($admin_email, adopt($form_subject), $message, $headers );
