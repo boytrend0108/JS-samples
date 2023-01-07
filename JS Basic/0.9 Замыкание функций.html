@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+<script>
+    function t() {
+      let a = 10;
+      return function n(p) {
+        return a = p + 10
+      }
+    }
+
+  const b = t()
+  const c = t()
+
+console.log(b(1))
+console.log(b(2))
+console.log(b(3))
+
+console.log(b(10))
+console.log(b(20))
+console.log(b(30))
+
+
+</script>
+</body>
+</html>

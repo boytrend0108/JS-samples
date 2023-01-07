@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+<script>
+// method splice
+const animals = ['ant', 'bison', 'camel', 'duck', 'elephant'];
+const newAnimals = animals.splice(1, 2)
+console.log(animals) // ['ant', 'duck', 'elephant']
+console.log(newAnimals) // ['bison', 'camel']
+
+
+// method slice НЕ ИЗЬМЕНЯЕТ ИСХОДНИК
+const animals2 = ['ant', 'bison', 'camel', 'duck', 'elephant'];
+const newAnimals2 = animals.slice(1, 2)
+console.log(animals2) // [['ant', 'bison', 'camel', 'duck', 'elephant']
+console.log(newAnimals2) // ['duck']
+
+
+</script>
+</body>
+</html>

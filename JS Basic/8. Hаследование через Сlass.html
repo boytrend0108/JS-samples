@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    class User{
+      constructor(name, age){
+        this.name = name,
+        this.age = age
+      }
+      doubleAge(){
+        return this.age *2
+      }
+    }
+
+    class Admin extends User{
+      constructor(name, age, status){
+        super(name, age)
+        this.status = status
+      }
+    }
+
+    const Ann = new User('Ann', 26)
+    const Vit = new Admin('Vit', 45, "Admin")
+  </script>
+</body>
+</html>

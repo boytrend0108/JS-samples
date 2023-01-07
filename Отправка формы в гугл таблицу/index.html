@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="contact form example">
+	<link rel="stylesheet" href="./css/style.css">
+	<title>Пример формы с отправкой данных в Google Sheets</title>
+</head>
+
+<body>
+
+	<form class="g-form" id="g-form-1" method="POST" action="" autocomplete="off">
+		<h2 class="g-form__title g-form__title_main">Оставьте заявку прямо сейчас и получите скидку 10%</h2>
+		<h2 class="g-form__title g-form__title_respond"></h2>
+		<div class="g-form__preloader"></div>
+		<div class="g-form__inputs">
+			<fieldset class="g-form__input-wrapper">
+				<input class="g-form__input g-form__input_name" id="name" name="Имя" placeholder="Введите ваше имя" required>
+			</fieldset>
+
+			<fieldset class="g-form__input-wrapper">
+				<input class="g-form__input g-form__input_tel" id="tel" name="Телефон" placeholder="Введите ваш телефон">
+			</fieldset>
+
+			<fieldset class="g-form__input-wrapper">
+				<input id="email" name="Email" type="email" value=""
+				required placeholder="Введите ваш email"/>
+			</fieldset>
+
+			<fieldset class="g-form__input-wrapper">
+				<input id="arbitrary-field" name="Произвольное поле" placeholder="Произвольное поле для теста">
+			</fieldset>
+
+			<fieldset class="g-form__input-wrapper">
+				<textarea id="message" name="Сообщение" rows="10"
+				placeholder="Введите сообщение"></textarea>
+			</fieldset>
+
+			<fieldset class="g-form__input-wrapper g-form__input-wrapper_hidden">
+				<label for="honeypot">Помогает бороться со спамом. Должно быть пустым!</label>
+				<input id="honeypot" type="text" name="honeypot" value="">
+			</fieldset>
+
+			<div class="g-form__button-wrapper">
+				<button class="g-form__button">Получить скидку</button>
+			</div>
+		</div>
+	</form>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="./g-form/g-form.js"></script>
+
+	<!-- Для маски номера телефона -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+	<script>
+		$(function() {
+			$('.g-form__input_tel').mask('+7(000)000-00-00');
+		});
+	</script>
+
+
+</body>
+</html>

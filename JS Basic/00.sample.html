@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+   const food = [
+     {name:'Apple', weight: 350, price: 68, quantity: 10},
+     {name:'Plum', weight: 150, price: 50, quantity: 15},
+     {name:'Melon', weight: 450, price: 20, quantity: 7},
+     {name:'Orange', weight: 50, price: 44, quantity: 100}
+   ]
+
+   const filteredFood = food.filter(el =>(el.price <= 50 && el.quantity > 10 ))
+   console.log(filteredFood)
+   const weight = filteredFood.reduce((acc, el)=> acc + el.weight, 0)
+   console.log(weight)
+    
+  
+    
+
+   
+   
+  </script>
+</body>
+
+</html>

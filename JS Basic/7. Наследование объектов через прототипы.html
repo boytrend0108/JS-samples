@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function Car(model, color){
+      this.model = model,
+      this.color = color
+    }
+    Car.prototype.changeColor = function(newColor){
+      return this.color = newColor
+    }
+
+    function SportCar(model,color,engine){
+      Car.call(this, model, color)
+      this.engine = engine
+    }
+    SportCar.prototype = Object.assign(Car.prototype)
+    SportCar.prototype.constructor = SportCar
+
+    const Audi = new Car('Audi', 'black')
+    const BMW_sport = new SportCar('BMW', "red", "3.5i")
+  </script>
+</body>
+</html>
