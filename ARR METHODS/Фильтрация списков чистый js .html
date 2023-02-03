@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+</head>
+
+<body>
+   
+  <input type="text" oninput="inputFn()">
+  <ul>
+  
+	</ul>
+ 
+<script>
+  "use strict";
+  let list = ['Иван', 'Петр', 'Василий']
+  const input = document.querySelector("input")
+  const ul = document.querySelector('ul')
+
+  // отрисовка списка v1
+  list.forEach(el => {
+    const li = document.createElement("li")
+    li.innerText = el
+    ul.appendChild(li)
+  })
+
+  // отрисовка списка v2
+  for (let el of list) {
+    const li = `<li>${el}</li>`
+    ul.insertAdjacentHTML("beforeend", li)
+  }
+
+  //filter
+  function inputFn() {
+    let items = document.querySelectorAll('li')
+    items.forEach(el => {
+      let inputValue = input.value.toLowerCase()
+      if (el.innerText.toLowerCase().indexOf(inputValue) > -1) {
+        el.style.display = ''
+      } else {
+        el.style.display = 'none'
+      }
+    })
+  }
+
+  const a =  'Мишаня'
+  console.log(a.indexOf("ь"))
+  console.log(a.includes("M"))
+
+
+
+</script>
+</body>
+
+</html>
